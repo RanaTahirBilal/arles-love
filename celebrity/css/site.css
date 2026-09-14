@@ -428,3 +428,11 @@ h1,h2,h3,h4,h5,.font,.heading,.subheading,.navbar,.btn,.tl-year,.aw-year,.svc-ye
   }
   .banner-section .media .media-body{ flex:0 0 auto; margin:0 !important }
 }
+
+/* The demo centres the recognition heading and, below lg, centres the card
+   bodies too. Everything else on this page is flush left, so centred blocks
+   read as a mistake rather than a choice. */
+.media-section .heading,
+.media-section .subheading{ text-align:left !important }
+.media-section .heading{ max-width:30ch }
+.media-section .card-body{ text-align:left !important }
