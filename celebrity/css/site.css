@@ -1,0 +1,430 @@
+/* ==========================================================================
+   Arles Hendershott Love. Overrides on the MegaOne `celebrity` demo.
+   Loaded last. The demo is an actor's portfolio: dark, red, image-hungry,
+   built around a movie-still carousel. Almost none of that survives, because
+   there is no photography of her at all, so this page has to carry itself on
+   type and structure.
+   ========================================================================== */
+
+:root{
+  --ah-ink:#14201F;        /* deep slate-teal, a control room rather than a boardroom */
+  --ah-ink-2:#1D2E2C;
+  --ah-muted:#5C6B69;
+  --ah-acc:#B9642B;        /* warm signal amber. Deliberately not Berenbeim's oxblood */
+  /* One amber cannot serve both grounds. Small uppercase labels are 11px to
+     12.5px, which WCAG treats as normal text at a 4.5:1 floor, so the mid
+     amber fails on white (4.29:1) and is marginal on the dark hero (4.54:1).
+     Two derived tokens carry small text; --ah-acc keeps its job on rules,
+     borders and the 40px figures, where the floor is 3:1. */
+  --ah-acc-ink:#A9571F;    /* small text on white or paper. 5.15:1 / 4.65:1 */
+  --ah-acc-lift:#E08A45;   /* small text on the dark hero and navbar. 7.36:1 */
+  --ah-acc-soft:rgba(185,100,43,.10);
+  --ah-line:rgba(20,32,31,.14);
+  --ah-paper:#F5F2EA;
+  --ah-white:#fff;
+}
+
+html,body{ overflow-x:hidden }
+body{
+  font-family:"Source Serif 4", Georgia, serif;
+  color:var(--ah-ink); background:var(--ah-white);
+  font-size:17px; line-height:1.7;
+}
+h1,h2,h3,h4,h5,.font,.heading,.subheading,.navbar,.btn,.tl-year,.aw-year,.svc-year,.card-year{
+  font-family:"Archivo", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- shared furniture --------------------------------------------- */
+.subheading{
+  font-size:11px !important; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--ah-acc-ink) !important; font-weight:700; margin:0 0 14px !important;
+}
+.heading{
+  font-size:clamp(25px,3.3vw,42px) !important; line-height:1.18 !important;
+  color:var(--ah-ink) !important; font-weight:700; letter-spacing:-.01em;
+  margin:0 0 18px !important; text-wrap:balance;
+}
+.sec-lead{ color:var(--ah-muted); font-size:17px; line-height:1.7; max-width:64ch; margin:0 }
+.career-section,.service-section,.creds-section{ padding:clamp(62px,8vw,104px) 0 }
+.career-section{ background:var(--ah-paper) }
+.creds-section{ background:var(--ah-paper) }
+
+/* the demo paints decorative red slabs via .rectangle in several sections */
+.about-section .rectangle,.contact-section .rectangle{ background:var(--ah-acc-soft) !important }
+
+/* ---------- nav ----------------------------------------------------------- */
+.navbar{ background:rgba(16,26,25,.94) !important; padding:14px 0 }
+.navbar .nav-link{
+  color:rgba(255,255,255,.88) !important; font-size:12.5px; letter-spacing:.11em;
+  text-transform:uppercase; font-weight:600;
+}
+.navbar .nav-link:hover,.navbar .active > .nav-link{ color:var(--ah-white) !important }
+.wordmark{ display:block; line-height:1.15; text-decoration:none !important }
+.wordmark b{
+  display:block; font-family:"Archivo",sans-serif; font-weight:700; color:#fff;
+  font-size:15px; letter-spacing:.01em;
+}
+.wordmark span{
+  display:block; font-family:"Archivo",sans-serif; font-size:9.5px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--ah-acc-lift); margin-top:3px;
+}
+.side-menu .inner-wrapper{ background:var(--ah-ink) }
+.side-menu .nav-link{ color:rgba(255,255,255,.88) !important }
+.copywrite{ color:rgba(255,255,255,.55); font-size:12.5px; line-height:1.6 }
+
+/* ---------- hero ---------------------------------------------------------- */
+/* The control room shot was framed with her on the right and a large slab of
+   plain dark wall on the left, which is where the type block sits. The gradient
+   is near opaque over that left third and thins to the right so she stays
+   visible. Contrast on the h1 is pixel sampled, not assumed. */
+.banner-section{
+  background-image:
+    linear-gradient(96deg, rgba(8,14,13,.94) 0%, rgba(8,14,13,.90) 36%, rgba(10,18,17,.70) 56%, rgba(12,22,21,.40) 78%, rgba(14,24,23,.32) 100%),
+    url("../../img/hero-controlroom.jpg") !important;
+  background-size:cover, cover !important;
+  background-position:center, 62% 40% !important;
+  background-repeat:no-repeat, no-repeat !important;
+  min-height:100vh; display:flex; align-items:center;
+  padding:120px 0 80px;
+}
+.banner-section .rectangle{ background:transparent !important; box-shadow:none !important; padding:0 !important }
+.banner-section .text{ max-width:min(860px,94%) }
+.banner-section .eyebrow{
+  font-family:"Archivo",sans-serif; font-size:11px; letter-spacing:.24em;
+  text-transform:uppercase; color:var(--ah-acc-lift); font-weight:700; margin:0 0 20px;
+}
+.banner-section h1{
+  font-family:"Archivo",sans-serif; font-weight:800; color:#fff;
+  font-size:clamp(36px,6.2vw,78px); line-height:1.03; letter-spacing:-.025em;
+  margin:0 0 20px; text-transform:none;
+}
+.banner-section .role-line{
+  font-family:"Archivo",sans-serif; font-size:clamp(12px,1.35vw,15px);
+  letter-spacing:.055em; color:rgba(255,255,255,.80); font-weight:500;
+  margin:0 0 30px; text-transform:uppercase;
+}
+.banner-section .lede{
+  color:rgba(255,255,255,.90); font-size:clamp(16px,1.7vw,20px); line-height:1.62;
+  max-width:60ch; margin:0 0 34px;
+}
+.banner-section .media{
+  display:inline-flex; align-items:center; gap:12px; color:#fff !important;
+  font-family:"Archivo",sans-serif; font-size:12px; letter-spacing:.18em;
+  text-transform:uppercase; font-weight:700; text-decoration:none !important;
+}
+.banner-section .media i{
+  width:38px; height:38px; border:1px solid rgba(255,255,255,.45); border-radius:50%;
+  display:inline-flex; align-items:center; justify-content:center; transition:.25s;
+}
+.banner-section .media:hover i{ background:var(--ah-acc); border-color:var(--ah-acc) }
+
+/* ---------- the turn ------------------------------------------------------ */
+.about-section{ padding:clamp(62px,8vw,104px) 0 }
+.about-section .text-section{ padding-right:clamp(0px,3vw,46px) }
+.about-section .text{ color:var(--ah-ink-2); margin:0 0 17px; font-size:17px; line-height:1.72 }
+.about-section .text em{ color:var(--ah-ink) }
+.muted-note{ color:var(--ah-muted) !important; font-size:15.5px !important; font-style:italic }
+
+.figs-col{ display:grid; gap:1px; background:var(--ah-line); border:1px solid var(--ah-line) }
+.fig{ background:var(--ah-white); padding:22px 22px 20px }
+.fig b{
+  display:block; font-family:"Archivo",sans-serif; font-weight:700; font-size:40px;
+  line-height:1; color:var(--ah-acc); letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums; margin-bottom:8px;
+}
+.fig span{ display:block; color:var(--ah-muted); font-size:14px; line-height:1.55 }
+
+/* ---------- career timeline ---------------------------------------------- */
+.era-label{
+  font-family:"Archivo",sans-serif; font-size:11px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--ah-ink); font-weight:700;
+  margin:clamp(28px,4vw,46px) 0 4px; padding-bottom:12px;
+  border-bottom:2px solid var(--ah-ink);
+}
+.era-label.second{ margin-top:clamp(40px,5vw,64px) }
+.tl{ list-style:none; margin:0; padding:0 }
+.tl-row{
+  display:grid; grid-template-columns:132px minmax(0,1fr); gap:4px 26px;
+  padding:22px 0; border-bottom:1px solid var(--ah-line); align-items:baseline;
+}
+.tl-year{
+  font-size:12.5px; letter-spacing:.06em; font-weight:700; color:var(--ah-acc-ink);
+  text-transform:uppercase; font-variant-numeric:tabular-nums; padding-top:3px;
+}
+.tl-title{ font-size:19px; font-weight:700; color:var(--ah-ink); margin:0 0 4px; line-height:1.3 }
+.tl-meta{ margin:0; color:var(--ah-muted); font-size:15px }
+.tl-note{ margin:6px 0 0; color:var(--ah-ink-2); font-size:15px; font-style:italic }
+.tl-foot{ margin:26px 0 0; color:var(--ah-muted); font-size:13.5px; line-height:1.6; max-width:76ch }
+
+/* ---------- recognition -------------------------------------------------- */
+/* The demo closes this section with a full-width photograph. Removed. */
+.media-section{ padding:clamp(62px,8vw,104px) 0; background:var(--ah-white) }
+.media-section .img-section{ display:none !important }
+.cards-section{ margin-top:clamp(26px,3.5vw,44px) }
+.media-section .card{
+  background:var(--ah-white) !important; border:1px solid var(--ah-line) !important;
+  border-top:3px solid var(--ah-acc) !important; border-radius:0 !important;
+  height:100%; margin-bottom:26px; transition:box-shadow .25s, transform .25s;
+}
+.media-section .card:hover{ box-shadow:0 14px 40px rgba(20,32,31,.12); transform:translateY(-3px) }
+.media-section .card.active,.media-section .card.selected{
+  background:var(--ah-ink) !important; border-color:var(--ah-ink) !important;
+}
+.media-section .card-body{ padding:26px 24px 28px }
+.card-year{
+  font-size:11px !important; letter-spacing:.18em; text-transform:uppercase;
+  font-weight:700; color:var(--ah-acc-ink) !important; margin:0 0 10px !important;
+}
+.media-section .card-title{
+  font-size:19px !important; font-weight:700; color:var(--ah-ink) !important;
+  line-height:1.3; margin:0 0 10px !important;
+}
+.media-section .card-body p:not(.card-year):not(.card-title){
+  color:var(--ah-muted); font-size:15px; line-height:1.65; margin:0;
+}
+.media-section .card.active .card-title,.media-section .card.selected .card-title{ color:#fff !important }
+.media-section .card.active .card-body p:not(.card-year),
+.media-section .card.selected .card-body p:not(.card-year){ color:rgba(255,255,255,.84) }
+
+.award-list{ list-style:none; margin:clamp(18px,3vw,34px) 0 0; padding:0 }
+.award-list li{
+  display:grid; grid-template-columns:74px minmax(0,1.4fr) minmax(0,1fr); gap:6px 22px;
+  padding:16px 0; border-top:1px solid var(--ah-line); align-items:baseline;
+}
+.award-list li:last-child{ border-bottom:1px solid var(--ah-line) }
+.aw-year{ font-size:12.5px; font-weight:700; color:var(--ah-acc-ink); font-variant-numeric:tabular-nums }
+.aw-name{ font-size:17px; font-weight:600; color:var(--ah-ink) }
+.aw-org{ font-size:15px; color:var(--ah-muted) }
+
+/* ---------- service ------------------------------------------------------- */
+.service-section{ background:var(--ah-white) }
+.svc-grid{ margin-top:clamp(26px,3.5vw,44px) }
+.svc{
+  border:1px solid var(--ah-line); border-left:3px solid var(--ah-acc);
+  padding:20px 20px 22px; height:100%; margin-bottom:24px; background:var(--ah-white);
+}
+.svc-year{
+  display:block; font-family:"Archivo",sans-serif; font-size:11px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ah-acc-ink); font-weight:700; margin-bottom:8px;
+  font-variant-numeric:tabular-nums;
+}
+.svc b{ display:block; font-size:16.5px; color:var(--ah-ink); line-height:1.35; margin-bottom:6px }
+.svc-role{ display:block; color:var(--ah-muted); font-size:14.5px; line-height:1.55 }
+
+/* ---------- credentials --------------------------------------------------- */
+.creds-section .subheading{ margin-bottom:18px !important }
+.cred-list,.memb-list{ list-style:none; margin:0; padding:0 }
+.cred-list li{ padding:15px 0; border-top:1px solid var(--ah-line) }
+.cred-list li b{ display:block; font-size:16.5px; color:var(--ah-ink); margin-bottom:4px; line-height:1.35 }
+.cred-list li span{ display:block; color:var(--ah-muted); font-size:14.5px; line-height:1.55 }
+.memb-list li{
+  padding:9px 0; border-top:1px solid var(--ah-line);
+  color:var(--ah-ink-2); font-size:15.5px;
+}
+.offduty{ margin:18px 0 0; color:var(--ah-muted); font-size:15px; font-style:italic; line-height:1.6 }
+
+/* ---------- contact ------------------------------------------------------- */
+/* The demo's form posts through vendor/contact-mailer.php, which does not exist
+   on static hosting, so every enquiry would be silently discarded. Deleted
+   outright rather than left looking functional. */
+.contact-section{ padding:clamp(62px,8vw,104px) 0 0; background:var(--ah-white) }
+.contact-section .img-section,.contact-section .contact-form{ display:none !important }
+.doors-row{ margin-top:clamp(24px,3.5vw,40px) }
+.door{
+  display:block; border:1px solid var(--ah-line); border-top:3px solid var(--ah-acc);
+  padding:26px 24px 28px; height:100%; margin-bottom:24px;
+  text-decoration:none !important; transition:box-shadow .25s, transform .25s;
+}
+.door:hover{ box-shadow:0 14px 40px rgba(20,32,31,.12); transform:translateY(-3px) }
+.door b{ display:block; font-family:"Archivo",sans-serif; font-size:19px; color:var(--ah-ink); margin-bottom:8px }
+.door span{ display:block; color:var(--ah-muted); font-size:15px; line-height:1.6 }
+.copyright-section{
+  margin-top:clamp(34px,4.5vw,58px); padding:26px 0 30px;
+  border-top:1px solid var(--ah-line);
+}
+.copyright-section p{ margin:0; color:var(--ah-muted); font-size:13.5px; line-height:1.65 }
+.src-note{ max-width:80ch }
+
+/* wow.js starts elements hidden. If the script fails they must not stay hidden. */
+.no-js .wow,.wow.animated{ visibility:visible !important }
+
+@media (max-width:991px){
+  .figs-col{ grid-template-columns:1fr 1fr; margin-top:34px }
+  .about-section .text-section{ padding-right:0 }
+  .banner-section{ min-height:auto; padding:130px 0 70px }
+}
+@media (max-width:575px){
+  .figs-col{ grid-template-columns:1fr }
+  .tl-row{ grid-template-columns:1fr; gap:6px }
+  .tl-year{ padding-top:0 }
+  .award-list li{ grid-template-columns:62px minmax(0,1fr); }
+  .award-list .aw-org{ grid-column:2 }
+}
+
+
+/* ---------- photography added after her approval ------------------------
+   Five generated images. Her likeness is used with her permission, kept
+   faithful to the reference she confirmed. The src-note in the contact
+   section states on the page that these are reconstructions of the settings
+   rather than documentary photographs of the events listed. */
+
+.side-fig, .strip-fig{ margin:0; overflow:hidden; background:var(--ah-ink) }
+.side-fig img, .strip-fig img{ width:100%; height:100%; object-fit:cover; display:block }
+.side-fig{ aspect-ratio:4/3; border-bottom:3px solid var(--ah-acc) }
+.about-section .side-fig{ margin-bottom:26px }
+.strip-fig{
+  aspect-ratio:21/9; border-bottom:3px solid var(--ah-acc);
+  margin:clamp(26px,3.5vw,44px) 0 clamp(8px,1.5vw,18px);
+}
+.strip-fig.bottom{ margin:clamp(34px,4.5vw,56px) 0 0 }
+.figs-col{ border-top:1px solid var(--ah-line) }
+
+@media (max-width:991px){
+  .side-fig{ aspect-ratio:16/9 }
+  .strip-fig{ aspect-ratio:16/9 }
+  .about-section .side-fig{ margin-top:34px }
+}
+
+
+/* the selected recognition card inverts to dark ink, so its small labels need
+   the lift token rather than the ink one */
+.media-section .card.active .card-year,
+.media-section .card.selected .card-year{ color:var(--ah-acc-lift) !important }
+/* aw-org sits at 15px/500 in the third column; the muted token measured 3.00:1
+   in place rather than the 5.55:1 it gets on plain white, so it takes ink-2 */
+.aw-org{ color:var(--ah-ink-2) !important }
+
+/* ---------- recognition layout, corrected --------------------------------
+   The demo offsets this card row with `position:relative; top:120px` so it
+   overhangs a full-width photograph printed underneath it. `top` moves the
+   row visually but reserves no layout space, and I deleted that photograph,
+   so the cards were painting straight over the award list beneath. Caught by
+   pixel sampling: .aw-org measured 1.18:1 because its real backdrop was the
+   dark selected card sitting on top of it, not the white section.
+   Replaced with ordinary flow spacing. */
+.media-section .cards-section{ position:static !important; top:auto !important }
+.media-section .cards-section .card{
+  margin-left:0 !important;          /* demo indents every card by 40px */
+  padding-top:0 !important; padding-bottom:0 !important;
+  box-shadow:none !important;
+}
+.media-section .cards-section .card:hover{ box-shadow:0 14px 40px rgba(20,32,31,.12) !important }
+.media-section .card.active,
+.media-section .card.selected{ box-shadow:none !important }
+/* the demo row is .no-gutters, and with the 40px card indent removed the three
+   cards butt against each other. Put the gutter back on the columns. */
+.media-section .cards-section > [class*="col-"]{ padding-left:13px; padding-right:13px }
+@media (max-width:991px){
+  .media-section .cards-section > [class*="col-"]{ padding-left:0; padding-right:0 }
+}
+
+/* ---------- hero geometry, corrected -------------------------------------
+   The demo builds this hero as a 340x610 absolutely positioned red slab
+   (.rectangle) with an absolutely positioned .text inside it. That makes the
+   text block's containing width 340px, so a 78px name wraps to four lines,
+   the block grows to 1020px, and `align-items:center` then centres something
+   taller than the viewport: at 1440x1000 the name sat at y=-470, completely
+   above the fold and unreachable. The demo also styles `.rectangle .text p`
+   at 16px with 130px of right padding, which outranked my own eyebrow rule
+   on specificity and is why it measured 16px/400 instead of 11px/700.
+   Both are unpicked here rather than patched around. */
+.banner-section .rectangle{
+  position:static !important;
+  width:auto !important; height:auto !important;
+  background-color:transparent !important;
+}
+.banner-section .rectangle .text{
+  position:static !important; bottom:auto !important; left:auto !important;
+  max-width:min(880px,94%);
+}
+.banner-section .rectangle .text p{
+  padding-right:0 !important;
+  font-size:inherit; color:inherit; font-weight:inherit;
+}
+/* restate the hero type now that the demo's p rule no longer outranks it */
+.banner-section .rectangle .text p.eyebrow{
+  font-family:"Archivo",sans-serif; font-size:11px !important; letter-spacing:.24em;
+  text-transform:uppercase; color:var(--ah-acc-lift) !important; font-weight:700 !important;
+  margin:0 0 20px !important;
+}
+.banner-section .rectangle .text p.role-line{
+  font-family:"Archivo",sans-serif; font-size:clamp(12px,1.35vw,15px) !important;
+  letter-spacing:.055em; color:rgba(255,255,255,.80) !important; font-weight:500 !important;
+  margin:0 0 30px !important; text-transform:uppercase;
+}
+.banner-section .rectangle .text p.lede{
+  color:rgba(255,255,255,.90) !important; font-size:clamp(16px,1.7vw,20px) !important;
+  line-height:1.62; max-width:60ch; margin:0 0 34px !important; font-weight:400 !important;
+}
+/* the demo also pins h2 at 80px white; our heading is an h1 but keep it safe */
+.banner-section .rectangle .text h1{
+  font-size:clamp(34px,5.4vw,72px) !important; line-height:1.04 !important;
+}
+
+/* Below the lg breakpoint the hero crop shifts and the brighter half of the
+   control room moves under the type block: the 11px eyebrow measured 3.69:1
+   at 768 and 3.93:1 at 390 against a 4.5:1 floor. The horizontal gradient
+   that works on desktop cannot help there, so narrow widths get a vertical
+   one that is near solid behind the text and opens up lower down. */
+@media (max-width:991px){
+  .banner-section{
+    background-image:
+      linear-gradient(185deg, rgba(7,12,11,.96) 0%, rgba(7,12,11,.93) 46%, rgba(9,16,15,.74) 74%, rgba(11,19,18,.58) 100%),
+      url("../../img/hero-controlroom.jpg") !important;
+    background-position:center, 64% 42% !important;
+  }
+}
+
+/* ---------- navbar corrections -------------------------------------------
+   1. The demo pads `.navbar-brand img` by 15px, but this build uses a text
+      wordmark, so the brand sat flush against the viewport edge and clipped.
+   2. `.navbar-fixed-top.scrolled` hides the brand AND the whole nav list,
+      leaving only a hamburger once you scroll. Fine for an actor's one-pager,
+      poor for a seven-section biography, so the bar stays put. */
+.navbar{ padding-left:clamp(16px,3vw,44px) !important; padding-right:clamp(16px,3vw,44px) !important }
+.navbar-fixed-top.scrolled .navbar-brand{ display:block !important }
+.navbar-fixed-top.scrolled .navbar-nav{ display:flex !important }
+.navbar-brand.wordmark{ padding-left:0 }
+@media (max-width:991px){
+  .navbar-fixed-top.scrolled .navbar-nav{ display:none !important }
+}
+
+/* ---------- about section, demo artifacts removed ------------------------
+   Three things the demo does here that read as bugs once the section carries
+   real copy and a photograph:
+   1. `.about-section .text-section .text` is `text-align:justify` with 70px of
+      right padding, which produces the gappy river spacing visible in a
+      narrow column. Ragged right is easier to read.
+   2. The section heading inherits a centred alignment from the demo, so a
+      centred headline sat above left-aligned body copy.
+   3. `.about-section .rectangle` is a 350x400 absolutely positioned red slab.
+      Recoloured it was just a stray pale block floating beside the portrait. */
+.about-section .text-section .text{
+  text-align:left !important;
+  padding-right:0 !important;
+  font-size:17px !important;
+}
+.about-section .heading,
+.about-section .subheading,
+.about-section .sec-lead{ text-align:left !important }
+.about-section .rectangle{ display:none !important }
+/* `.about-section .heading` carries 250px of padding on both sides from the
+   demo, which is why the headline appeared centred while the eyebrow above it
+   and the body below it were flush left. */
+.about-section .heading{ padding-left:0 !important; padding-right:0 !important; max-width:26ch }
+
+/* ---------- mobile hero -------------------------------------------------
+   The demo centres the hero text below lg and turns `.media` into a full
+   width block, which split the button: circle icon pinned left, label
+   floating in the centre. Left align the block and rebuild the button as an
+   inline flex row so the icon and label stay together. */
+@media (max-width:991px){
+  .banner-section .rectangle .text,
+  .banner-section .rectangle .text p,
+  .banner-section .rectangle .text h1{ text-align:left !important }
+  .banner-section .media{
+    display:inline-flex !important; width:auto !important; height:auto !important;
+    align-items:center; gap:12px; justify-content:flex-start !important;
+  }
+  .banner-section .media .media-body{ flex:0 0 auto; margin:0 !important }
+}
