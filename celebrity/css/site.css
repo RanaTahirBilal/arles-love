@@ -436,3 +436,10 @@ h1,h2,h3,h4,h5,.font,.heading,.subheading,.navbar,.btn,.tl-year,.aw-year,.svc-ye
 .media-section .subheading{ text-align:left !important }
 .media-section .heading{ max-width:30ch }
 .media-section .card-body{ text-align:left !important }
+
+/* Philanthropy section, added 2026-10-09 after the client asked for one.
+   Same card system as Service, on the paper ground so the two read as a pair. */
+.phil-section{ padding:clamp(62px,8vw,104px) 0; background:var(--ah-paper) }
+.phil-section .svc{ background:var(--ah-white) }
+.service-section .subheading{ margin-top:8px }
+.creds-section{ border-top:1px solid var(--ah-line) }
