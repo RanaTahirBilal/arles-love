@@ -443,3 +443,8 @@ h1,h2,h3,h4,h5,.font,.heading,.subheading,.navbar,.btn,.tl-year,.aw-year,.svc-ye
 .phil-section .svc{ background:var(--ah-white) }
 .service-section .subheading{ margin-top:8px }
 .creds-section{ border-top:1px solid var(--ah-line) }
+
+/* Full detail lists inside the service cards, added 2026-10-09 at the client request */
+.svc-detail{ list-style:none; margin:8px 0 0; padding:0 }
+.svc-detail li{ color:var(--ah-muted); font-size:14.5px; line-height:1.55; padding:4px 0 4px 14px; position:relative }
+.svc-detail li:before{ content:""; position:absolute; left:0; top:11px; width:5px; height:5px; border-radius:50%; background:var(--ah-acc) }
